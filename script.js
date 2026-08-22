@@ -12,7 +12,7 @@ const CONFIG = {
       `
     },
     {
-      title: "Teleram",
+      title: "Telegram",
       url: "https://t.me/xeroonion",
       icon: "✦"
     },
