@@ -12,7 +12,7 @@ const links = [
   {
     name: "Telegram",
     className: "telegram",
-    url: "https://t.me/xeroonion",
+    url: "https://t.me/opxero",
     icon: `
       <svg viewBox="0 0 24 24">
         <path d="M21.5 3.5 18.2 20c-.25 1.17-.9 1.46-1.83.91l-5.03-3.7-2.43 2.34c-.27.27-.5.5-1.03.5l.37-5.12 9.32-8.42c.4-.37-.09-.57-.62-.2L5.43 13.52.47 11.97c-1.08-.34-1.1-1.08.23-1.58L20.07 2.9c.9-.33 1.7.2 1.43.6Z"/>
