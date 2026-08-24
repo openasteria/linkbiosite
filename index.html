@@ -3,37 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#080b09">
-  <meta name="description" content="opend">
+  <meta name="theme-color" content="#08110c">
   <title>opend</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <div class="background"></div>
-  <div class="noise"></div>
-  <div class="vignette"></div>
-  <div class="cursor-glow"></div>
+  <div class="background-tint"></div>
+  <canvas id="ambient"></canvas>
 
   <main class="page">
-    <section class="profile-card">
+    <section class="profile-card" id="profileCard">
 
-      <div class="avatar-wrap">
-        <img class="avatar" src="assets/avatar.jpg" alt="Avatar">
-        <span class="online-dot"></span>
+      <div class="profile">
+
+        <div class="avatar-wrap">
+          <img src="assets/avatar.jpg" alt="opend" class="avatar">
+          <span class="online"></span>
+        </div>
+
+        <div class="name">
+          <h1>opend</h1>
+
+          <span class="verified">
+            <svg viewBox="0 0 24 24">
+              <path d="M5.5 12.5 9.4 16.2 18.5 7.8"></path>
+            </svg>
+          </span>
+        </div>
+
       </div>
-
-      <h1 id="name"></h1>
 
       <div class="links" id="links"></div>
 
+      <div class="socials" id="socials"></div>
+
     </section>
   </main>
-
-  <div class="toast" id="toast"></div>
 
   <script src="script.js"></script>
 </body>
