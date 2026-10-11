@@ -34,7 +34,6 @@ const LINKS = [
 /* ---------- Рендер ссылок ---------- */
 
 const linksContainer = document.getElementById("links");
-const socialsContainer = document.getElementById("socials");
 
 function createLink(item, index) {
   const element = document.createElement("a");
@@ -59,20 +58,6 @@ function createLink(item, index) {
 
 LINKS.forEach((item, index) => {
   linksContainer.appendChild(createLink(item, index));
-});
-
-LINKS.forEach(item => {
-  const element = document.createElement("a");
-
-  element.className = "social";
-  element.href = item.url;
-  element.target = "_blank";
-  element.rel = "noopener noreferrer";
-  element.title = item.name;
-  element.setAttribute("aria-label", item.name);
-  element.innerHTML = item.icon;
-
-  socialsContainer.appendChild(element);
 });
 
 /* ---------- Ripple-эффект на ссылках ---------- */

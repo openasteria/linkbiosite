@@ -150,29 +150,6 @@ body {
     );
 }
 
-/* ---------- Beta-бейдж ---------- */
-
-.badge {
-  position: absolute;
-  top: 18px;
-  right: 18px;
-  padding: 4px 11px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: #0d1a11;
-  background: linear-gradient(135deg, var(--green-bright), var(--green));
-  border-radius: 999px;
-  box-shadow: 0 4px 14px rgba(169, 228, 177, 0.25);
-  animation: badge-pulse 3s ease-in-out infinite;
-}
-
-@keyframes badge-pulse {
-  0%, 100% { box-shadow: 0 4px 14px rgba(169, 228, 177, 0.25); }
-  50%      { box-shadow: 0 4px 22px rgba(169, 228, 177, 0.5); }
-}
-
 /* ---------- Профиль ---------- */
 
 .profile {
@@ -202,24 +179,6 @@ body {
 .avatar-wrap:hover .avatar {
   transform: scale(1.04);
   border-color: var(--green-bright);
-}
-
-.online {
-  position: absolute;
-  right: 2px;
-  bottom: 5px;
-  width: 19px;
-  height: 19px;
-  border-radius: 50%;
-  border: 3px solid #17221a;
-  background: #a9e4b1;
-  box-shadow: 0 0 15px rgba(169, 228, 177, 0.3);
-  animation: online-pulse 2.4s ease-in-out infinite;
-}
-
-@keyframes online-pulse {
-  0%, 100% { box-shadow: 0 0 10px rgba(169, 228, 177, 0.25); }
-  50%      { box-shadow: 0 0 20px rgba(169, 228, 177, 0.6); }
 }
 
 .name {
@@ -274,27 +233,6 @@ body {
   color: var(--muted);
 }
 
-.status {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  margin-top: 14px;
-  padding: 6px 14px;
-  font-size: 12.5px;
-  font-weight: 600;
-  color: var(--green-bright);
-  background: rgba(169, 228, 177, 0.08);
-  border: 1px solid rgba(169, 228, 177, 0.18);
-  border-radius: 999px;
-}
-
-.status-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #a9e4b1;
-  animation: online-pulse 2s ease-in-out infinite;
-}
 
 /* ---------- Ссылки ---------- */
 
@@ -466,44 +404,6 @@ body {
   border-color: rgba(183, 217, 189, 0.25);
 }
 
-/* ---------- Соцсети ---------- */
-
-.socials {
-  display: flex;
-  justify-content: center;
-  gap: 9px;
-  margin-top: 18px;
-}
-
-.social {
-  width: 40px;
-  height: 40px;
-  display: grid;
-  place-items: center;
-  color: rgba(239, 244, 240, 0.62);
-  background: rgba(12, 20, 15, 0.58);
-  border: 1px solid rgba(218, 232, 220, 0.1);
-  border-radius: 12px;
-  text-decoration: none;
-  transition:
-    transform 0.2s ease,
-    color 0.2s ease,
-    background 0.2s ease,
-    border-color 0.2s ease;
-}
-
-.social:hover {
-  transform: translateY(-3px);
-  color: #f1f5f2;
-  background: rgba(30, 42, 33, 0.72);
-  border-color: rgba(183, 217, 189, 0.25);
-}
-
-.social svg {
-  width: 19px;
-  height: 19px;
-  fill: currentColor;
-}
 
 /* ---------- Футер карточки ---------- */
 
@@ -606,12 +506,6 @@ body {
     border-radius: 24px;
   }
 
-  .badge {
-    top: 14px;
-    right: 14px;
-    padding: 3px 9px;
-    font-size: 10px;
-  }
 
   .avatar-wrap,
   .avatar {
