@@ -418,7 +418,6 @@ body {
 .github .link-icon    { color: #edf3ee; }
 .telegram .link-icon  { color: #82c8df; background: rgba(73, 158, 190, 0.09); }
 .discord .link-icon   { color: #aaa1d9; background: rgba(108, 91, 164, 0.09); }
-.youtube .link-icon   { color: #e69a94; background: rgba(190, 73, 73, 0.09); }
 
 .link-text {
   position: relative;
