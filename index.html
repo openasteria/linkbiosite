@@ -4,47 +4,73 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#08110c">
-  <title>opend</title>
+  <meta name="description" content="opend — ссылки, соцсети и контакты.">
+  <title>opend · links</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+
+  <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
 
   <div class="background"></div>
   <div class="background-tint"></div>
-  <canvas id="ambient"></canvas>
+  <canvas id="ambient" aria-hidden="true"></canvas>
 
   <main class="page">
     <section class="profile-card" id="profileCard">
 
+      <span class="badge badge-beta" title="Бета-версия страницы">beta</span>
+
       <div class="profile">
 
         <div class="avatar-wrap">
-          <img src="assets/avatar.jpg" alt="opend" class="avatar">
-          <span class="online"></span>
+          <img src="assets/avatar.jpg" alt="opend" class="avatar" width="126" height="126" fetchpriority="high">
+          <span class="online" role="status" aria-label="В сети"></span>
         </div>
 
         <div class="name">
           <h1>opend</h1>
 
-          <span class="verified">
-            <svg viewBox="0 0 24 24">
+          <span class="verified" title="Подтверждён">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M5.5 12.5 9.4 16.2 18.5 7.8"></path>
             </svg>
           </span>
         </div>
 
+        <p class="bio">Разработчик · открываю новое каждый день</p>
+
+        <div class="status" id="statusPill">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span class="status-text" id="statusText">в сети</span>
+        </div>
+
       </div>
 
-      <div class="links" id="links"></div>
+      <nav class="links" id="links" aria-label="Ссылки"></nav>
 
-      <div class="socials" id="socials"></div>
+      <div class="socials" id="socials" aria-label="Соцсети"></div>
+
+      <footer class="card-footer">
+        <button class="copy" id="copyBtn" type="button" data-url="opendam.online">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="9" y="9" width="11" height="11" rx="2.5"></rect>
+            <path d="M5 15V6a2 2 0 0 1 2-2h9"></path>
+          </svg>
+          <span class="copy-label">opendam.online</span>
+        </button>
+        <span class="clock" id="clock" aria-label="Локальное время">--:--:--</span>
+      </footer>
 
     </section>
   </main>
 
-  <script src="script.js"></script>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js" defer></script>
 </body>
 </html>

@@ -1,57 +1,74 @@
-const links = [
+"use strict";
+
+/* ============================================================
+   opend · links  —  beta
+   Улучшенная версия: доп. ссылки, анимации появления,
+   ripple-эффект, копирование домена, живые часы, тосты,
+   улучшенный canvas-фон (соединения частиц + вспышки).
+   ============================================================ */
+
+const LINKS = [
   {
     name: "GitHub",
+    subtitle: "openasteria",
     className: "github",
     url: "https://github.com/openasteria",
-    icon: `
-      <svg viewBox="0 0 24 24">
-        <path d="M12 .6a12 12 0 0 0-3.8 23.38c.6.11.82-.26.82-.58v-2.26c-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.34-1.77-1.34-1.77-1.09-.75.08-.74.08-.74 1.2.09 1.83 1.23 1.83 1.23 1.07 1.83 2.8 1.3 3.49.99.11-.78.42-1.3.76-1.6-2.66-.3-5.46-1.33-5.46-5.92 0-1.31.47-2.38 1.23-3.22-.12-.3-.53-1.52.12-3.17 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.65 1.65.24 2.87.12 3.17.76.84 1.23 1.91 1.23 3.22 0 4.6-2.8 5.62-5.47 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .6Z"/>
-      </svg>
-    `
+    icon: `<svg viewBox="0 0 24 24"><path d="M12 .6a12 12 0 0 0-3.8 23.38c.6.11.82-.26.82-.58v-2.26c-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.34-1.77-1.34-1.77-1.09-.75.08-.74.08-.74 1.2.09 1.83 1.23 1.83 1.23 1.07 1.83 2.8 1.3 3.49.99.11-.78.42-1.3.76-1.6-2.66-.3-5.46-1.33-5.46-5.92 0-1.31.47-2.38 1.23-3.22-.12-.3-.53-1.52.12-3.17 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.65 1.65.24 2.87.12 3.17.76.84 1.23 1.91 1.23 3.22 0 4.6-2.8 5.62-5.47 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .6Z"/></svg>`
   },
   {
     name: "Telegram",
+    subtitle: "@opxero",
     className: "telegram",
     url: "https://t.me/opxero",
-    icon: `
-      <svg viewBox="0 0 24 24">
-        <path d="M21.5 3.5 18.2 20c-.25 1.17-.9 1.46-1.83.91l-5.03-3.7-2.43 2.34c-.27.27-.5.5-1.03.5l.37-5.12 9.32-8.42c.4-.37-.09-.57-.62-.2L5.43 13.52.47 11.97c-1.08-.34-1.1-1.08.23-1.58L20.07 2.9c.9-.33 1.7.2 1.43.6Z"/>
-      </svg>
-    `
+    icon: `<svg viewBox="0 0 24 24"><path d="M21.5 3.5 18.2 20c-.25 1.17-.9 1.46-1.83.91l-5.03-3.7-2.43 2.34c-.27.27-.5.5-1.03.5l.37-5.12 9.32-8.42c.4-.37-.09-.57-.62-.2L5.43 13.52.47 11.97c-1.08-.34-1.1-1.08.23-1.58L20.07 2.9c.9-.33 1.7.2 1.43.6Z"/></svg>`
   },
   {
     name: "Discord",
+    subtitle: "opend",
     className: "discord",
     url: "https://discord.com/users/1401088127921033257",
-    icon: `
-      <svg viewBox="0 0 24 24">
-        <path d="M19.54 4.48A16.7 16.7 0 0 0 15.4 3.2l-.52 1.05a15.6 15.6 0 0 0-5.76 0L8.6 3.2a16.7 16.7 0 0 0-4.14 1.28C1.84 8.4 1.13 12.83 1.48 17.2a16.8 16.8 0 0 0 5.06 2.57l1.22-1.66c-.67-.25-1.31-.56-1.92-.93l.47-.36c3.7 1.7 8.61 1.7 12.27 0l.47.36c-.61.37-1.25.68-1.92.93l1.22 1.66a16.8 16.8 0 0 0 5.06-2.57c.41-5.06-.7-9.45-3.87-12.72ZM8.5 15.2c-1.1 0-2-1-2-2.2s.88-2.2 2-2.2 2 1 2 2.2-.9 2.2-2 2.2Zm7 0c-1.1 0-2-1-2-2.2s.88-2.2 2-2.2 2 1 2 2.2-.9 2.2-2 2.2Z"/>
-      </svg>
-    `
+    icon: `<svg viewBox="0 0 24 24"><path d="M19.54 4.48A16.7 16.7 0 0 0 15.4 3.2l-.52 1.05a15.6 15.6 0 0 0-5.76 0L8.6 3.2a16.7 16.7 0 0 0-4.14 1.28C1.84 8.4 1.13 12.83 1.48 17.2a16.8 16.8 0 0 0 5.06 2.57l1.22-1.66c-.67-.25-1.31-.56-1.92-.93l.47-.36c3.7 1.7 8.61 1.7 12.27 0l.47.36c-.61.37-1.25.68-1.92.93l1.22 1.66a16.8 16.8 0 0 0 5.06-2.57c.41-5.06-.7-9.45-3.87-12.72ZM8.5 15.2c-1.1 0-2-1-2-2.2s.88-2.2 2-2.2 2 1 2 2.2-.9 2.2-2 2.2Zm7 0c-1.1 0-2-1-2-2.2s.88-2.2 2-2.2 2 1 2 2.2-.9 2.2-2 2.2Z"/></svg>`
+  },
+  {
+    name: "YouTube",
+    subtitle: "канал",
+    className: "youtube",
+    url: "https://youtube.com/@opendam",
+    icon: `<svg viewBox="0 0 24 24"><path d="M23.5 6.9a3 3 0 0 0-2.1-2.1C19.5 4.3 12 4.3 12 4.3s-7.5 0-9.4.5A3 3 0 0 0 .5 6.9 31.3 31.3 0 0 0 0 12a31.3 31.3 0 0 0 .5 5.1 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.3 31.3 0 0 0 24 12a31.3 31.3 0 0 0-.5-5.1ZM9.6 15.6V8.4l6.3 3.6Z"/></svg>`
   }
 ];
+
+/* ---------- Рендер ссылок ---------- */
 
 const linksContainer = document.getElementById("links");
 const socialsContainer = document.getElementById("socials");
 
-links.forEach(item => {
+function createLink(item, index) {
   const element = document.createElement("a");
 
   element.className = `link ${item.className}`;
   element.href = item.url;
   element.target = "_blank";
   element.rel = "noopener noreferrer";
+  element.style.setProperty("--delay", `${index * 90 + 250}ms`);
 
   element.innerHTML = `
     <span class="link-icon">${item.icon}</span>
-    <span class="link-title">${item.name}</span>
-    <span class="link-arrow">→</span>
+    <span class="link-text">
+      <span class="link-title">${item.name}</span>
+      <span class="link-subtitle">${item.subtitle}</span>
+    </span>
+    <span class="link-arrow" aria-hidden="true">→</span>
   `;
 
-  linksContainer.appendChild(element);
+  return element;
+}
+
+LINKS.forEach((item, index) => {
+  linksContainer.appendChild(createLink(item, index));
 });
 
-links.forEach(item => {
+LINKS.forEach(item => {
   const element = document.createElement("a");
 
   element.className = "social";
@@ -65,18 +82,85 @@ links.forEach(item => {
   socialsContainer.appendChild(element);
 });
 
+/* ---------- Ripple-эффект на ссылках ---------- */
+
+linksContainer.addEventListener("pointerdown", event => {
+  const link = event.target.closest(".link");
+  if (!link) return;
+
+  const rect = link.getBoundingClientRect();
+  const ripple = document.createElement("span");
+
+  ripple.className = "ripple";
+  ripple.style.left = `${event.clientX - rect.left}px`;
+  ripple.style.top = `${event.clientY - rect.top}px`;
+
+  link.appendChild(ripple);
+  ripple.addEventListener("animationend", () => ripple.remove());
+});
+
+/* ---------- Тосты ---------- */
+
+const toast = document.getElementById("toast");
+let toastTimer = null;
+
+function showToast(message) {
+  toast.textContent = message;
+  toast.classList.add("show");
+
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove("show"), 2200);
+}
+
+/* ---------- Копирование домена ---------- */
+
+const copyBtn = document.getElementById("copyBtn");
+
+copyBtn.addEventListener("click", async () => {
+  const url = copyBtn.dataset.url;
+
+  try {
+    await navigator.clipboard.writeText(`https://${url}`);
+    showToast("Скопировано ✓");
+  } catch {
+    const helper = document.createElement("textarea");
+    helper.value = `https://${url}`;
+    document.body.appendChild(helper);
+    helper.select();
+    document.execCommand("copy");
+    helper.remove();
+    showToast("Скопировано ✓");
+  }
+
+  copyBtn.classList.add("copied");
+  setTimeout(() => copyBtn.classList.remove("copied"), 1200);
+});
+
+/* ---------- Живые часы ---------- */
+
+const clock = document.getElementById("clock");
+
+function tickClock() {
+  const now = new Date();
+  clock.textContent = now.toLocaleTimeString("ru-RU", { hour12: false });
+}
+
+tickClock();
+setInterval(tickClock, 1000);
+
+/* ---------- Canvas: частицы + связи + вспышки ---------- */
+
 const canvas = document.getElementById("ambient");
 const ctx = canvas.getContext("2d");
+
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 let width = 0;
 let height = 0;
 let particles = [];
+let bursts = [];
 
-const mouse = {
-  x: -1000,
-  y: -1000,
-  active: false
-};
+const mouse = { x: -1000, y: -1000, active: false };
 
 function resize() {
   const ratio = Math.min(window.devicePixelRatio || 1, 2);
@@ -92,8 +176,8 @@ function resize() {
   ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
 
   const amount = Math.min(
-    55,
-    Math.max(24, Math.floor((width * height) / 24000))
+    80,
+    Math.max(28, Math.floor((width * height) / 16000))
   );
 
   particles = Array.from({ length: amount }, () => createParticle());
@@ -103,16 +187,62 @@ function createParticle() {
   return {
     x: Math.random() * width,
     y: Math.random() * height,
-    vx: (Math.random() - 0.5) * 0.12,
-    vy: (Math.random() - 0.5) * 0.12,
-    size: Math.random() * 1.5 + 0.4,
-    alpha: Math.random() * 0.32 + 0.08,
+    vx: (Math.random() - 0.5) * 0.14,
+    vy: (Math.random() - 0.5) * 0.14,
+    size: Math.random() * 1.6 + 0.4,
+    alpha: Math.random() * 0.34 + 0.08,
     phase: Math.random() * Math.PI * 2
   };
 }
 
+function spawnBurst(x, y) {
+  const count = 10;
+  for (let i = 0; i < count; i++) {
+    const angle = (Math.PI * 2 * i) / count + Math.random() * 0.4;
+    bursts.push({
+      x, y,
+      vx: Math.cos(angle) * (0.8 + Math.random() * 1.4),
+      vy: Math.sin(angle) * (0.8 + Math.random() * 1.4),
+      life: 1,
+      size: Math.random() * 2 + 1
+    });
+  }
+}
+
+document.addEventListener("click", event => {
+  if (reduceMotion) return;
+  if (event.target.closest(".link, .social, .copy")) {
+    spawnBurst(event.clientX, event.clientY);
+  }
+});
+
+const LINK_DISTANCE = 120;
+
 function draw() {
   ctx.clearRect(0, 0, width, height);
+
+  /* связи между близкими частицами */
+  for (let i = 0; i < particles.length; i++) {
+    const a = particles[i];
+
+    for (let j = i + 1; j < particles.length; j++) {
+      const b = particles[j];
+
+      const dx = a.x - b.x;
+      const dy = a.y - b.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+
+      if (dist < LINK_DISTANCE) {
+        const opacity = (1 - dist / LINK_DISTANCE) * 0.08;
+        ctx.strokeStyle = `rgba(183, 217, 189, ${opacity})`;
+        ctx.lineWidth = 0.6;
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.stroke();
+      }
+    }
+  }
 
   for (const particle of particles) {
     particle.phase += 0.008;
@@ -125,41 +255,49 @@ function draw() {
     if (particle.y < -20) particle.y = height + 20;
     if (particle.y > height + 20) particle.y = -20;
 
-    let dx = mouse.x - particle.x;
-    let dy = mouse.y - particle.y;
-    let distance = Math.sqrt(dx * dx + dy * dy);
+    const dx = mouse.x - particle.x;
+    const dy = mouse.y - particle.y;
+    const distance = Math.sqrt(dx * dx + dy * dy) || 1;
 
     if (mouse.active && distance < 180) {
       const force = (180 - distance) / 180;
-      particle.x -= (dx / distance) * force * 0.22;
-      particle.y -= (dy / distance) * force * 0.22;
+      particle.x -= (dx / distance) * force * 0.24;
+      particle.y -= (dy / distance) * force * 0.24;
     }
 
-    const alpha =
-      particle.alpha +
-      Math.sin(particle.phase) * 0.04;
+    const alpha = particle.alpha + Math.sin(particle.phase) * 0.04;
 
     ctx.beginPath();
-    ctx.arc(
-      particle.x,
-      particle.y,
-      particle.size,
-      0,
-      Math.PI * 2
-    );
-
+    ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
     ctx.fillStyle = `rgba(194, 224, 199, ${Math.max(0.03, alpha)})`;
+    ctx.fill();
+  }
+
+  /* вспышки по клику */
+  for (let i = bursts.length - 1; i >= 0; i--) {
+    const p = bursts[i];
+
+    p.x += p.vx;
+    p.y += p.vy;
+    p.vx *= 0.96;
+    p.vy *= 0.96;
+    p.life -= 0.025;
+
+    if (p.life <= 0) {
+      bursts.splice(i, 1);
+      continue;
+    }
+
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.size * p.life, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(200, 232, 206, ${p.life * 0.7})`;
     ctx.fill();
   }
 
   if (mouse.active) {
     const glow = ctx.createRadialGradient(
-      mouse.x,
-      mouse.y,
-      0,
-      mouse.x,
-      mouse.y,
-      190
+      mouse.x, mouse.y, 0,
+      mouse.x, mouse.y, 190
     );
 
     glow.addColorStop(0, "rgba(182, 220, 188, 0.075)");
@@ -167,16 +305,15 @@ function draw() {
     glow.addColorStop(1, "rgba(182, 220, 188, 0)");
 
     ctx.fillStyle = glow;
-    ctx.fillRect(
-      mouse.x - 190,
-      mouse.y - 190,
-      380,
-      380
-    );
+    ctx.fillRect(mouse.x - 190, mouse.y - 190, 380, 380);
   }
 
   requestAnimationFrame(draw);
 }
+
+/* ---------- 3D-наклон карточки ---------- */
+
+const card = document.getElementById("profileCard");
 
 window.addEventListener("resize", resize);
 
@@ -185,7 +322,8 @@ window.addEventListener("pointermove", event => {
   mouse.y = event.clientY;
   mouse.active = true;
 
-  const card = document.getElementById("profileCard");
+  if (reduceMotion) return;
+
   const rect = card.getBoundingClientRect();
 
   if (
@@ -195,17 +333,14 @@ window.addEventListener("pointermove", event => {
     event.clientY <= rect.bottom &&
     window.innerWidth > 800
   ) {
-    const x =
-      (event.clientX - rect.left) / rect.width - 0.5;
-
-    const y =
-      (event.clientY - rect.top) / rect.height - 0.5;
+    const x = (event.clientX - rect.left) / rect.width - 0.5;
+    const y = (event.clientY - rect.top) / rect.height - 0.5;
 
     card.style.transform = `
       perspective(1200px)
-      rotateX(${(-y * 1.2).toFixed(2)}deg)
-      rotateY(${(x * 1.2).toFixed(2)}deg)
-      translateY(-2px)
+      rotateX(${(-y * 1.6).toFixed(2)}deg)
+      rotateY(${(x * 1.6).toFixed(2)}deg)
+      translateY(-3px)
     `;
 
     card.style.setProperty(
@@ -220,15 +355,25 @@ window.addEventListener("pointermove", event => {
   }
 });
 
-document
-  .getElementById("profileCard")
-  .addEventListener("mouseleave", () => {
-    document.getElementById("profileCard").style.transform = "";
-  });
+card.addEventListener("mouseleave", () => {
+  card.style.transform = "";
+});
 
 window.addEventListener("pointerleave", () => {
   mouse.active = false;
 });
 
 resize();
-draw();
+
+if (reduceMotion) {
+  /* один статичный кадр вместо цикла анимации */
+  ctx.clearRect(0, 0, width, height);
+  for (const particle of particles) {
+    ctx.beginPath();
+    ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(194, 224, 199, ${particle.alpha})`;
+    ctx.fill();
+  }
+} else {
+  draw();
+}
