@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-# Деплой beta-версии на opendam.online — запустить локально в папке проекта
+# Deploys the beta branch to opendam.online (GitHub Pages, main branch)
+# Usage: ./deploy-beta.sh <TOKEN>
 set -e
 TOKEN="${1:?Usage: ./deploy-beta.sh <TOKEN>}"
 git push "https://x-access-token:${TOKEN}@github.com/openasteria/linkbiosite.git" beta:main --force
-echo "OK — сайт обновится на http://opendam.online в течение 1-2 минут"
+echo "OK - site will update at http://opendam.online within 1-2 minutes"
